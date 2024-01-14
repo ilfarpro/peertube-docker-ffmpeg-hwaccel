@@ -15,24 +15,21 @@ COPY --chown=peertube:peertube . /app
 WORKDIR /app
 
 # Install Node.js, npm, yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs \
- && npm install --global yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs
+RUN npm install --global yarn
 
-USER peertube
-
+USER root
 ENV NODE_MAJOR=18
 
 # Install manually client dependencies to apply our network timeout option
-RUN cd client && yarn install --pure-lockfile --network-timeout 1200000 && cd ../ \
-    && yarn install --pure-lockfile --network-timeout 1200000 \
-    && npm run build \
-    && rm -r ./node_modules ./client/node_modules ./client/.angular \
-    && yarn install --pure-lockfile --production --network-timeout 1200000 --network-concurrency 20 \
-    && yarn cache clean
+RUN cd client && yarn install --pure-lockfile --network-timeout 1200000 && cd ../
+RUN yarn install --pure-lockfile --network-timeout 1200000
+RUN npm run build
+RUN rm -r ./node_modules ./client/node_modules ./client/.angular
+RUN yarn install --pure-lockfile --production --network-timeout 1200000 --network-concurrency 20
+RUN yarn cache clean
 
-USER root
-
-RUN mkdir /data /config
+RUN mkdir /data
 RUN chown -R peertube:peertube /data /config
 
 ENV NODE_ENV production
