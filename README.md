@@ -18,4 +18,4 @@ docker build . -t peertube:linuxserver -f support/docker/production/Dockerfile.l
 ```
 
 3. Follow official instructions to deploy https://docs.joinpeertube.org/install/docker
-4. **Make sure to change** `image: chocobozzz/peertube:production-bookworm` **in docker-compose.yml to** `image: peertube:linuxserver`
+4. **Change** `image: chocobozzz/peertube:production-bookworm` **in docker-compose.yml to** `image: peertube:linuxserver`
