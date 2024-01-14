@@ -15,8 +15,8 @@ COPY --chown=peertube:peertube . /app
 WORKDIR /app
 
 # Install Node.js, npm, yarn
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
-apt install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt install -y nodejs \
+ && npm install --global yarn
 
 USER peertube
 
