@@ -11,7 +11,16 @@ git clone https://github.com/Chocobozzz/PeerTube.git \
 && cd PeerTube/support/docker/production \
 && wget https://raw.githubusercontent.com/ilfarpro/peertube-docker-ffmpeg-hwaccel/main/Dockerfile.linuxserver
 ```
-2. Open PeerTube's repo folder and build from custom Dockerfile.linuxserver
+2. Clone custom repo with ffmpeg and build it
+```
+git clone https://github.com/ilfarpro/docker-ffmpeg-psy.git
+cd docker-ffmpeg-psy
+docker build \
+  --no-cache \
+  --pull \
+  -t linuxserver/ffmpeg-psy:latest .
+``` 
+3. Open PeerTube's repo folder and build from custom Dockerfile.linuxserver
 ```
 cd PeerTube
 docker build . -t peertube:linuxserver -f support/docker/production/Dockerfile.linuxserver
