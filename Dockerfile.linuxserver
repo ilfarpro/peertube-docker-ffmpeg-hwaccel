@@ -4,7 +4,7 @@
 
 # Custom ffmpeg with SVT-AV1-PSY from
 # https://github.com/ilfarpro/docker-ffmpeg-psy.git
-FROM linuxserver/ffmpeg-psy
+FROM linuxserver/ffmpeg-psy:latest
 
 # Install dependencies
 RUN apt update && apt upgrade -y \
