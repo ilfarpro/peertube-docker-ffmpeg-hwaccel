@@ -1,4 +1,9 @@
-FROM linuxserver/ffmpeg:latest
+# If you want official version, use this
+# FROM linuxserver/ffmpeg:latest
+
+# Custom ffmpeg with SVT-AV1-PSY from
+# https://github.com/ilfarpro/docker-ffmpeg-psy.git
+FROM linuxserver/ffmpeg-psy
 
 # Install dependencies
 RUN apt update && apt upgrade -y \
