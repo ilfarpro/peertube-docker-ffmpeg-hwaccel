@@ -1,5 +1,6 @@
-# If you want official version, use this
+# If you want official version, uncomment this
 # FROM linuxserver/ffmpeg:latest
+# and comment next one.
 
 # Custom ffmpeg with SVT-AV1-PSY from
 # https://github.com/ilfarpro/docker-ffmpeg-psy.git
