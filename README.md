@@ -11,6 +11,25 @@ git clone https://github.com/Chocobozzz/PeerTube.git \
 && cd PeerTube/support/docker/production \
 && wget https://raw.githubusercontent.com/ilfarpro/peertube-docker-ffmpeg-hwaccel/main/Dockerfile.linuxserver
 ```
+
+Optionally add fix for preview and thumbnail sizes in
+`server/core/initializers/constants.ts`
+
+Like so:
+```
+// Videos thumbnail size
+const THUMBNAILS_SIZE = {
+  width: 560,
+  height: 317,
+  minWidth: 300
+}
+const PREVIEWS_SIZE = {
+  width: 1280,
+  height: 720,
+  minWidth: 600
+}
+```
+
 2. Clone custom repo with ffmpeg and build it
 ```
 git clone https://github.com/ilfarpro/docker-ffmpeg-psy.git
@@ -18,12 +37,12 @@ cd docker-ffmpeg-psy
 docker build \
   --no-cache \
   --pull \
-  -t linuxserver/ffmpeg-psy:latest .
+  -t ilfarpro/ffmpeg-psy:latest .
 ``` 
 3. Open PeerTube's repo folder and build from custom Dockerfile.linuxserver
 ```
 cd PeerTube
-docker build . -t peertube:linuxserver -f support/docker/production/Dockerfile.linuxserver
+docker build . -t ilfarpro/peertube:latest -f support/docker/production/Dockerfile.linuxserver
 ```
 
 3. Follow official instructions to deploy https://docs.joinpeertube.org/install/docker
