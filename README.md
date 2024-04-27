@@ -14,8 +14,6 @@ git clone https://github.com/Chocobozzz/PeerTube.git \
 
 Optionally add fix for preview and thumbnail sizes in
 `server/core/initializers/constants.ts`
-
-Like so:
 ```
 // Videos thumbnail size
 const THUMBNAILS_SIZE = {
