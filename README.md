@@ -44,4 +44,4 @@ docker build . -t ilfarpro/peertube:latest -f support/docker/production/Dockerfi
 ```
 
 3. Follow official instructions to deploy https://docs.joinpeertube.org/install/docker
-4. **Change** `image: chocobozzz/peertube:production-bookworm` **in docker-compose.yml to** `image: peertube:linuxserver`
+4. **Change** `image: chocobozzz/peertube:production-bookworm` **in docker-compose.yml to** `image: ilfarpro/peertube:latest`
